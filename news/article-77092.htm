@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnforpc.github.io/news/article-77092.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42. Vue组件传值-子组件通过事件调用向父组件传值</title>
+        <meta name="description" content="1.首先写一个子组件以及父组件的展示内容  5.在父组件设置data参数，接收子组件传递过来的参数 目录  			   前言 上一篇章讲解了使用props将父组件的值传递到子组件中，那么子组件如果反过" />
+        <link rel="icon" href="/assets/website/img/sstapnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN for PC 推荐免费VPN节点订阅中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnforpc.github.io/news/article-77092.htm" />
+    <meta property="og:site_name" content="VPN for PC 推荐免费VPN节点订阅中文网" />
+    <meta property="og:title" content="42. Vue组件传值-子组件通过事件调用向父组件传值" />
+    <meta property="og:image" content="https://vpnforpc.github.io/uploads/20241109/3226612243617cafeba1b76a386262ff.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:10:53" />
+    <meta property="og:updated_time" content="2025-03-19T09:10:53" />
+        <meta property="og:description" content="1.首先写一个子组件以及父组件的展示内容  5.在父组件设置data参数，接收子组件传递过来的参数 目录  			   前言 上一篇章讲解了使用props将父组件的值传递到子组件中，那么子组件如果反过" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="42. Vue组件传值-子组件通过事件调用向父组件传值">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/magnific-popup.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/nice-select.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ3WSD0P7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QCJ3WSD0P7');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="preloader">
+        <div class="loader-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container position-relative">
+                    <a class="navbar-brand" href="/">
+                                                <span>VPN for PC</span>
+                                            </a>
+                    <div class="mobile-menu-right">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                                                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/client.htm">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="site-breadcrumb" style="background: url(/assets/website/img/sstapnode/01.jpg)">
+            <div class="container">
+                <h1 class="breadcrumb-title">42. Vue组件传值-子组件通过事件调用向父组件传值</h1>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li class="active">正文</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="1.首先写一个子组件以及父组件的展示内容">1.首先写一个子组件以及父组件的展示内容</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="5.在父组件设置data参数，接收子组件传递过来的参数">5.在父组件设置data参数，接收子组件传递过来的参数</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <div id="content_views" class="htmledit_views"> <article class="_2rhmJa" style="font-size: 16px;" rel="nofollow"> <h2>前言</h2> <p>上一篇章讲解了使用<code>props</code>将父组件的值传递到子组件中，那么子组件如果反过来传递给父组件呢？</p> <p>这就需要父组件传递事件方法，提供子组件调用，通过子组件调用父组件的函数，传入相关参数，来进行逆向传递。</p> <p>而子组件如果想要调用父组件的函数，则需要使用<code>emit</code>方法。</p> <p>官网介绍地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://links.jianshu.com/go?to=https%3A%2F%2Fcn.vuejs.org%2Fv2%2Fapi%2F%23vm-emit"  target="_blank" rel="nofollow">https://cn.vuejs.org/v2/api/#vm-emit</a></p> <h2>原理基本说明：子组件向父组件传值</h2> <ol> <li> <p>原理：父组件将方法的引用，传递到子组件内部，子组件在内部调用父组件传递过来的方法，同时把要发送给父组件的数据，在调用方法的时候当作参数传递进去；</p> </li> <li> <p>父组件将方法的引用传递给子组件，其中，<code>getMsg</code>是父组件中<code>methods</code>中定义的方法名称，<code>func</code>是子组件调用传递过来方法时候的方法名称。</p> <pre class="has"><code>&lt;son @func="getMsg"&gt;&lt;/son&gt;</code></pre> </li> <li> <p>子组件内部通过<code>this.$emit('方法名', 要传递的数据)</code>方式，来调用父组件中的方法，同时把数据传递给父组件使用。</p> <pre class="has"><code>&lt;div id="app"&gt;     &lt;!-- 引用父组件 --&gt;     &lt;son @func="getMsg"&gt;&lt;/son&gt;      &lt;!-- 组件模板定义 --&gt;     &lt;script type="x-template" id="son"&gt;       &lt;div&gt;         &lt;input type="button" value="向父组件传值" @click="sendMsg" /&gt;       &lt;/div&gt;     &lt;/script&gt;   &lt;/div&gt;    &lt;script&gt;     // 子组件的定义方式     Vue.component('son', {       template: '#son', // 组件模板Id       methods: {         sendMsg() { // 按钮的点击事件           this.$emit('func', 'OK'); // 调用父组件传递过来的方法，同时把数据传递出去         }       }     });      // 创建 Vue 实例，得到 ViewModel     var vm = new Vue({       el: '#app',       data: {},       methods: {         getMsg(val){ // 子组件中，通过 this.$emit() 实际调用的方法，在此进行定义           alert(val);         }       }     });   &lt;/script&gt;</code></pre> </li> </ol> <h3>具体示例</h3> <p>下面逐步写一个子组件通过事件调用向父组件传值的示例。</p> <p>需要以下步骤：</p> <ul> <li>首页编写子组件与父组件在页面展示</li> <li>编写父组件一个示例方法<code>show</code>，使用<code>v-on</code>绑定到子组件中</li> <li>在子组件中使用<code>emit</code>调用绑定下来的父组件方法，测试能否调用</li> <li>在子组件中使用<code>emit</code>传递参数到父组件中</li> </ul> <p>基本上步骤大致是这样，下面来逐步写写看。</p> <span class="directory"></span><h4 id="title-0">1.首先写一个子组件以及父组件的展示内容</h4> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/880557c7d7b5b38895854015726a1e16.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211114459261   </div> </p></div> <p>浏览器显示如下：</p> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/2c023a83ff25e8af39570164612fe41f.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211121058687   </div> </p></div> <h4>2.编写父组件一个示例方法<code>show</code>，使用<code>v-on</code>绑定到子组件中</h4> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/73cda0977d652d0f13fbc92ca82788c8.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211230028054   </div> </p></div> <h4>3.在子组件中使用<code>emit</code>调用绑定下来的父组件方法，测试能否调用</h4> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/87b40356028dd9a60b303ebb657eebb4.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211230331172   </div> </p></div> <h4>4.在子组件中使用<code>emit</code>传递参数到父组件中</h4> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/f5c2aa6edc5747cf91e9d5a4b7945092.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211230611997   </div> </p></div> <p>好了，现在在浏览器点击来看看打印的信息，如下：</p> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/6cc4117f1c2070647cee1949694cfc39.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211230827734   </div> </p></div> <p>那么从上面，我们看到了子组件的参数已经传递父组件中，那么可以思考一下，父组件接收到了参数之后，是否还可以传递到父组件的<code>data</code>参数么？</p> <span class="directory"></span><h4 id="title-1">5.在父组件设置data参数，接收子组件传递过来的参数</h4> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/128558180f016006770d1bde98a3ada6.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211231222466   </div> </p></div> <p>在浏览器执行如下：</p> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/a1cfabcd71c061c3eeb5a82329187809.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211231331832   </div> </p></div> <div class="image-package"> <div class="image-container"> <div class="image-container-fill"></div> <div class="image-view" style="display:block;text-align:center;">     <img decoding="async" src="http://img.555519.xyz/uploads/20221230/b1a8fc8f94039e10bd284bd2fc36e8d3.jpg" alt="42. Vue组件传值-子组件通过事件调用向父组件传值"/> </div> </p></div> <div class="image-caption">    image-20200211231434985   </div> </p></div> <p>好了，到这里基本已经实现了子组件往父组件传值的整体过程了。</p> <p><strong>更多精彩原创Devops文章，快来关注我的Devops社群吧：</strong></p> <div class="image-package"> <div class="image-caption"></div> </p></div> </article> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-77090.htm">什么是 Spring Profiles？</a></p>
+                                        <p>下一个：<a href="/news/article-77755.htm">Python 路径处理(os.path模块)</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-v2ray.htm" title="VPN for PC | 3月20日22.7M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址">VPN for PC | 3月20日22.7M/S|免费V2ray/Clash/SSR/Shadowrocket订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-77756.htm" title="Vue3的vue-router路由详解">Vue3的vue-router路由详解</a></li>
+                        <li class="py-2"><a href="/news/article-77090.htm" title="什么是 Spring Profiles？">什么是 Spring Profiles？</a></li>
+                        <li class="py-2"><a href="/news/article-77755.htm" title="Python 路径处理(os.path模块)">Python 路径处理(os.path模块)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-v2ray.htm" title="VPN for PC | 3月19日21.9M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点地址">VPN for PC | 3月19日21.9M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-76649.htm" title="领养协议书范本2019版图片（领养孩子协议书图片）">领养协议书范本2019版图片（领养孩子协议书图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-18-clash-v2ray-ss-ssr.htm" title="VPN for PC | 3月18日21.2M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点地址">VPN for PC | 3月18日21.2M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-76648.htm" title="宠物领养协议有法律效力吗多少钱合适呢（宠物领养协议具有法律效应吗）">宠物领养协议有法律效力吗多少钱合适呢（宠物领养协议具有法律效应吗）</a></li>
+                        <li class="py-2"><a href="/news/article-77092.htm" title="42. Vue组件传值-子组件通过事件调用向父组件传值">42. Vue组件传值-子组件通过事件调用向父组件传值</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer class="footer-area">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">VPN for PC 推荐免费VPN节点订阅中文网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/sstapnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/modernizr.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.appear.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/counter-up.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.timepicker.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
