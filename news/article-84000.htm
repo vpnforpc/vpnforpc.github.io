@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnforpc.github.io/news/article-84000.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struts2中拦截器的定义及配置</title>
+        <meta name="description" content="Struts2的拦截器的定义及配置 1、什么是拦截器 Interceptor：拦截器，起到拦截Action的作用。 Filter：过滤器，过滤从客户端向服务器发送的请求。 Interceptor：拦截" />
+        <link rel="icon" href="/assets/website/img/sstapnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN for PC 推荐免费VPN节点订阅中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnforpc.github.io/news/article-84000.htm" />
+    <meta property="og:site_name" content="VPN for PC 推荐免费VPN节点订阅中文网" />
+    <meta property="og:title" content="Struts2中拦截器的定义及配置" />
+    <meta property="og:image" content="https://vpnforpc.github.io/uploads/20241109/8ae12d41733cf3613e8f1ddf955528d2.webp" />
+        <meta property="og:release_date" content="2025-03-29T09:01:32" />
+    <meta property="og:updated_time" content="2025-03-29T09:01:32" />
+        <meta property="og:description" content="Struts2的拦截器的定义及配置 1、什么是拦截器 Interceptor：拦截器，起到拦截Action的作用。 Filter：过滤器，过滤从客户端向服务器发送的请求。 Interceptor：拦截" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Struts2中拦截器的定义及配置">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/magnific-popup.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/nice-select.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ3WSD0P7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QCJ3WSD0P7');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="preloader">
+        <div class="loader-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container position-relative">
+                    <a class="navbar-brand" href="/">
+                                                <span>VPN for PC</span>
+                                            </a>
+                    <div class="mobile-menu-right">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                                                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/client.htm">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="site-breadcrumb" style="background: url(/assets/website/img/sstapnode/01.jpg)">
+            <div class="container">
+                <h1 class="breadcrumb-title">Struts2中拦截器的定义及配置</h1>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li class="active">正文</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h4><a id="Struts2_0" rel="nofollow"></a>Struts2的拦截器的定义及配置</h4> <p>1、<mark>什么是拦截器</mark></p> <p><mark>Interceptor</mark>：拦截器，起到拦截Action的作用。<br /> Filter：过滤器，过滤从客户端向服务器发送的请求。</p> <p>Interceptor：拦截器，拦截是客户端对Action的访问。<br /> 更细粒度化的拦截。（拦截Action中的具体的方法）。</p> <p>Struts2框架核心的功能都是依赖拦截器实现。</p> <p>Struts2中的拦截器是AOP思想，不修改程序的前提下，就可以对程序进行扩展。</p> <p>需要拦截器的功能，就配置上。<br /> 不需要，就去掉配置，源程序不需要改动。</p> <hr/> <p>2、<mark>Struts2的执行流程</mark></p> <p>客户端向服务器发送一个Action的请求，执行核心过滤器（doFilter）方法。</p> <p>在这个方法中，调用executeAction()方法，在这个方法内部调用dispatcher.serviceAction();在这个方法内部创建一个Action代理，最终执行的是Action代理中的execute(),在代理中执行的execute方法中调用ActionInvocation的invoke方法。</p> <p>在这个方法内部递归执行一组拦截器（完成部分功能），如果没有下一个拦截器，就会执行目标Action，根据Action的返回的结果进行页面跳转。</p> <hr/> <p>3、<mark>自定义拦截器</mark></p> <p>编写一个类实现Interceptor接口，或者继承AbstractInterceptor类。<br /> 常用继承AbstractInterceptor，因为实现接口要写多个方法。</p> <p>测试代码：</p> <pre><code class="prism language-java"><span class="token comment">// 自定义拦截器</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">InterceptorDemo1</span><span class="token keyword">extends</span><span class="token class-name">AbstractInterceptor</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span> String<span class="token function">intercept</span><span class="token punctuation">(</span>ActionInvocation actionInvocation<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{<!-- --></span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"InterceptorDemo1拦截器执行了。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> actionInvocation<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <hr/> <p>4、<mark>拦截器的配置</mark></p> <p>在配置文件中的package标签里进行配置。</p> <p>（1）第一种配置方式：不定义拦截器栈</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo1<span class="token punctuation">"</span></span><span class="token attr-name">extends</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>struts-default<span class="token punctuation">"</span></span><span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- 定义拦截器 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptors</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo1<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.pipi.struts2.interceptor.InterceptorDemo1<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo2<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.pipi.struts2.interceptor.InterceptorDemo2<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>interceptors</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>actionDemo1<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.pipi.struts2.demo1.ActionDemo1<span class="token punctuation">"</span></span><span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>execute<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>jsp1/demo1.jsp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- 引入拦截器（一旦引入自定义拦截器，默认的拦截器栈中的拦截器就不会执行了，需要手动添加） --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>defaultStack<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo1<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo2<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>action</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>package</span><span class="token punctuation">&gt;</span></span></code></pre> <p>（2）第二种配置方式：定义一个拦截器栈的方式</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo1<span class="token punctuation">"</span></span><span class="token attr-name">extends</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>struts-default<span class="token punctuation">"</span></span><span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- 定义拦截器 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptors</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo1<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.pipi.struts2.interceptor.InterceptorDemo1<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo2<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.pipi.struts2.interceptor.InterceptorDemo2<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token comment">&lt;!-- 定义拦截器栈 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-stack</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myStack<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>defaultStack<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo1<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interceptorDemo2<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>interceptor-stack</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>interceptors</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>actionDemo1<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.pipi.struts2.demo1.ActionDemo1<span class="token punctuation">"</span></span><span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>execute<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>jsp1/demo1.jsp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>result</span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- 引入拦截器栈 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interceptor-ref</span><span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myStack<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>action</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>package</span><span class="token punctuation">&gt;</span></span></code></pre> <hr/> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-83267.htm">动物打疫苗后多久能杀了吃的东西（动物打完疫苗需要注意什么）</a></p>
+                                        <p>下一个：<a href="/news/article-84001.htm">凯锐思狗粮质量怎么样（十大狗粮品牌排行榜）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-79815.htm" title="动物医院管理办法全文内容图片（动物医院管理系统）">动物医院管理办法全文内容图片（动物医院管理系统）</a></li>
+                        <li class="py-2"><a href="/news/article-79138.htm" title="猫咪三针疫苗叫什么名字（猫三针疫苗是什么）">猫咪三针疫苗叫什么名字（猫三针疫苗是什么）</a></li>
+                        <li class="py-2"><a href="/news/article-80476.htm" title="宠物粮食利润大吗知乎文章推荐（宠物粮食店一年利润怎么样）">宠物粮食利润大吗知乎文章推荐（宠物粮食店一年利润怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-81875.htm" title="动物防疫***收费吗现在 动物防疫站***多少钱">动物防疫***收费吗现在 动物防疫站***多少钱</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-free-node-subscribe-links.htm" title="VPN for PC | 3月21日20.1M/S|免费SSR/V2ray/Shadowrocket/Clash订阅节点地址">VPN for PC | 3月21日20.1M/S|免费SSR/V2ray/Shadowrocket/Clash订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-80477.htm" title="宠物医院开办批准手续需要多久（宠物医院开办条件）">宠物医院开办批准手续需要多久（宠物医院开办条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-v2ray.htm" title="VPN for PC | 3月19日21.9M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点地址">VPN for PC | 3月19日21.9M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-82569.htm" title="怎么联系宠物救助站 怎么联系宠物救助站哈尔滨">怎么联系宠物救助站 怎么联系宠物救助站哈尔滨</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-node-subscribe.htm" title="VPN for PC | 3月22日21.4M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点地址">VPN for PC | 3月22日21.4M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-81210.htm" title="兽医职业资格证报名条件（兽医职业资格证书报考条件）">兽医职业资格证报名条件（兽医职业资格证书报考条件）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer class="footer-area">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">VPN for PC 推荐免费VPN节点订阅中文网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/sstapnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/modernizr.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.appear.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/counter-up.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.timepicker.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
