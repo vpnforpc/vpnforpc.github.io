@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnforpc.github.io/news/article-88305.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring AOP打通两个切面之间的通信详解</title>
+        <meta name="description" content="场景描述 在秒杀微服务中，笔者在需要各种校验前端传来的参数后，通过 Redis 加锁限流（切面A）并返回，最后封装订单数据推送到 RabbitMQ 消息队列（切面B）做善后工作。 问题：如何将 切面 " />
+        <link rel="icon" href="/assets/website/img/sstapnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN for PC 推荐免费VPN节点订阅中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnforpc.github.io/news/article-88305.htm" />
+    <meta property="og:site_name" content="VPN for PC 推荐免费VPN节点订阅中文网" />
+    <meta property="og:title" content="Spring AOP打通两个切面之间的通信详解" />
+    <meta property="og:image" content="https://vpnforpc.github.io/uploads/20241109/2409dbb8d68baa568413cf6deb7e7ae2.webp" />
+        <meta property="og:release_date" content="2025-04-04T09:09:29" />
+    <meta property="og:updated_time" content="2025-04-04T09:09:29" />
+        <meta property="og:description" content="场景描述 在秒杀微服务中，笔者在需要各种校验前端传来的参数后，通过 Redis 加锁限流（切面A）并返回，最后封装订单数据推送到 RabbitMQ 消息队列（切面B）做善后工作。 问题：如何将 切面 " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring AOP打通两个切面之间的通信详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/magnific-popup.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/nice-select.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ3WSD0P7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QCJ3WSD0P7');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="preloader">
+        <div class="loader-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container position-relative">
+                    <a class="navbar-brand" href="/">
+                                                <span>VPN for PC</span>
+                                            </a>
+                    <div class="mobile-menu-right">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                                                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/client.htm">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="site-breadcrumb" style="background: url(/assets/website/img/sstapnode/01.jpg)">
+            <div class="container">
+                <h1 class="breadcrumb-title">Spring AOP打通两个切面之间的通信详解</h1>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li class="active">正文</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<h3 id="场景描述">场景描述</h3> <p>在秒杀微服务中，笔者在需要各种校验前端传来的参数后，通过 Redis 加锁限流（切面A）并返回，最后封装订单数据推送到 RabbitMQ 消息队列（切面B）做善后工作。</p> <p>问题：如何将 切面 A 的数据传递 给切面B 处理呢？</p> <pre><code class="language-java">/**  * 添加到秒杀流程  *  * @param killId 秒杀商品缓存键 sessionId_skuId  * @param key    随机码 randomCode  * @param num    数量  * @return {@link R}  */ @GetMapping("/kill") public R addToSeckill(         @RequestParam("killId") String killId,         @RequestParam("key") String key,         @RequestParam("num") Integer num) {     // 实现类只是带有两个注解方法，返回 null（因为全部交给切面托管了）     String orderSn = seckillService.kill(killId, key, num);     if (StringUtils.isEmpty(orderSn)) {         return R.error();     }     return R.ok().setData(orderSn); }</code></pre> <h3 id="解决方案">解决方案</h3> <p>通过参数传递数据，通过捕获异常保证业务逻辑（离谱但有用） ????</p> <pre><code class="language-java">// 强制修改参数，通过异常返回正常流程，而通过AOP消息队列处理收尾动作 try {     return pjp.proceed(new Object[]{orderTo, null, null}); } catch (Throwable e) {     return orderSn; }</code></pre> <p>注意事项：</p> <ol> <li> <p>参数一致性：必须伪造和方法签名的<strong>数量相等</strong>的参数 ⇒ 否则线程会抛出异常 I 就返回了，无法执行<code>pjp.proceed</code> 原始方法 ⇒ 无法跳转第二个切面<br /><code>java.lang.IllegalArgumentException: Expecting 3 arguments to proceed, but was passed 1 arguments</code></p> </li> <li> <p>捕获异常不抛出，直接执行正常业务逻辑 ⇒ 否则线程将吞没异常 II<br /><code>cn.miozus.gulimall.common.to.mq.SeckillOrderTo cannot be cast to java.lang.String</code></p> </li> </ol> <p>3.虽然两个切面都返回了<code>orderSn</code> ，实际最终只有切面A传递到了控制层和前端， 切面B的返回值成了摆设。</p> <h3 id="跳转过程">跳转过程</h3> <p>打断点查看两个切面的跳转过程。</p> <p>切面A：准备跳转第二个切面</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/efb74164f89abe7e257ea98171039d08.jpg" alt="Spring AOP打通两个切面之间的通信详解"></p> <p>切面B：发送消息完成</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9845db59d43c7dc2ab69121c99b45333.jpg" alt="Spring AOP打通两个切面之间的通信详解"></p> <p>打印日志，可见场景需求，已经满足了。</p> <pre><code class="language-bash">2022-03-29 17:32:56.521  INFO 7904 --- [io-25000-exec-8] c.m.g.s.aspect.SeckillRabbitMqAspect     : 快速创建订单：发送消息创建完成: 202203291732444881508738921192005634 2022-03-29 17:33:01.526  INFO 7904 --- [io-25000-exec-8] c.m.g.s.controller.SeckillController     : 秒杀创建订单用时：28778 ???? seckill orderSn = 202203291732444881508738921192005634 2022-03-29 17:33:01.527  INFO 7904 --- [nectionFactory5] c.m.g.s.config.RabbitMqSeckillConfig     : ???? 消息已发送, params: correlationData:null,ack:true,cause:null</code></pre> <h3 id="其他方案">其他方案</h3> <p>最简单的办法，不切了，两个切面耦合在一起。注入和调用方法。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-87586.htm">Redis+Caffeine两级缓存，让访问速度纵享丝滑</a></p>
+                                        <p>下一个：<a href="/news/article-88306.htm">怎么开宠物店需要些什么手续（零经验开宠物店的流程）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-84001.htm" title="凯锐思狗粮质量怎么样（十大狗粮品牌排行榜）">凯锐思狗粮质量怎么样（十大狗粮品牌排行榜）</a></li>
+                        <li class="py-2"><a href="/news/article-78454.htm" title="青岛哪家动物医院好一点（青岛哪家宠物医院好）">青岛哪家动物医院好一点（青岛哪家宠物医院好）</a></li>
+                        <li class="py-2"><a href="/news/article-83266.htm" title="宠物疫苗要多少钱（宠物疫苗要多少钱一针）">宠物疫苗要多少钱（宠物疫苗要多少钱一针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-node-share.htm" title="VPN for PC | 4月5日18.8M/S|免费V2ray/Shadowrocket/SSR/Clash订阅节点地址">VPN for PC | 4月5日18.8M/S|免费V2ray/Shadowrocket/SSR/Clash订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-83267.htm" title="动物打疫苗后多久能杀了吃的东西（动物打完疫苗需要注意什么）">动物打疫苗后多久能杀了吃的东西（动物打完疫苗需要注意什么）</a></li>
+                        <li class="py-2"><a href="/news/article-78453.htm" title="mysql从服务列表里消失">mysql从服务列表里消失</a></li>
+                        <li class="py-2"><a href="/news/article-76649.htm" title="领养协议书范本2019版图片（领养孩子协议书图片）">领养协议书范本2019版图片（领养孩子协议书图片）</a></li>
+                        <li class="py-2"><a href="/news/article-80476.htm" title="宠物粮食利润大吗知乎文章推荐（宠物粮食店一年利润怎么样）">宠物粮食利润大吗知乎文章推荐（宠物粮食店一年利润怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-79815.htm" title="动物医院管理办法全文内容图片（动物医院管理系统）">动物医院管理办法全文内容图片（动物医院管理系统）</a></li>
+                        <li class="py-2"><a href="/news/article-79814.htm" title="开个动物医院需要办理那些证件呢 开个动物医院需要办理那些证件呢要多少钱">开个动物医院需要办理那些证件呢 开个动物医院需要办理那些证件呢要多少钱</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer class="footer-area">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">VPN for PC 推荐免费VPN节点订阅中文网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/sstapnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/modernizr.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.appear.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/counter-up.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.timepicker.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
