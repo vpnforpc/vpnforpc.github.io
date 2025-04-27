@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnforpc.github.io/news/article-105513.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue实现列表拖拽排序的示例代码_vue.js</title>
+        <meta name="description" content=" 本文主要介绍了vue实现列表拖拽排序的示例代码，具体如下：   &lt;template&gt;    &lt;div class="test_wrapper" @dragover="dragove" />
+        <link rel="icon" href="/assets/website/img/sstapnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN for PC 推荐免费VPN节点订阅中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnforpc.github.io/news/article-105513.htm" />
+    <meta property="og:site_name" content="VPN for PC 推荐免费VPN节点订阅中文网" />
+    <meta property="og:title" content="vue实现列表拖拽排序的示例代码_vue.js" />
+    <meta property="og:image" content="https://vpnforpc.github.io/uploads/20241109/b1d0cdac71e991f16f9750dc7fb6c92f.webp" />
+        <meta property="og:release_date" content="2025-04-27T08:29:16" />
+    <meta property="og:updated_time" content="2025-04-27T08:29:16" />
+        <meta property="og:description" content=" 本文主要介绍了vue实现列表拖拽排序的示例代码，具体如下：   &lt;template&gt;    &lt;div class="test_wrapper" @dragover="dragove" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue实现列表拖拽排序的示例代码_vue.js">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/magnific-popup.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/nice-select.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ3WSD0P7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QCJ3WSD0P7');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="preloader">
+        <div class="loader-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container position-relative">
+                    <a class="navbar-brand" href="/">
+                                                <span>VPN for PC</span>
+                                            </a>
+                    <div class="mobile-menu-right">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                                                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/client.htm">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="site-breadcrumb" style="background: url(/assets/website/img/sstapnode/01.jpg)">
+            <div class="container">
+                <h1 class="breadcrumb-title">vue实现列表拖拽排序的示例代码_vue.js</h1>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li class="active">正文</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p> 本文主要介绍了vue实现列表拖拽排序的示例代码，具体如下：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/4657c92975da6c68a60dea5a94bd7ff0.jpg"></p> <div class="ay1code"> <pre class="brush:js;">&lt;template&gt;    &lt;div class="test_wrapper" @dragover="dragover($event)"&gt;      &lt;transition-group class="transition-wrapper" name="sort"&gt;        &lt;div v-for="(item) in dataList" :key='item.id' class="sort-item"          :draggable="true"          @dragstart="dragstart(item)"          @dragenter="dragenter(item,$event)"          @dragend="dragend(item,$event)"          @dragover="dragover($event)"        &gt;          {{ item.label }}        &lt;/div&gt;      &lt;/transition-group&gt;    &lt;/div&gt;  &lt;/template&gt;     &lt;script lang="ts"&gt;    import {Vue, Component, Prop, Watch} from "vue-property-decorator";    import { addWebsite } from '@/api'    @Component({      components: {}    })    export default class Test extends Vue {         oldData: any = null; // 开始排序时按住的旧数据      newData: any = null; // 拖拽过程的数据         // 列表数据      dataList:any = [        { id:1,label:'测试一号' },        { id:2,label:'测试二号' },        { id:3,label:'测试三号' },        { id:4,label:'测试四号' },      ];         dragstart(value: any) {        this.oldData = value      }         // 记录移动过程中信息      dragenter(value: any, e: any) {        this.newData = value        e.preventDefault()      }         // 拖拽最终操作      dragend(value: any, e: any) {        if (this.oldData !== this.newData) {          let oldIndex = this.dataList.indexOf(this.oldData)          let newIndex = this.dataList.indexOf(this.newData)          let newItems = [...this.dataList]          // 删除老的节点          newItems.splice(oldIndex, 1)          // 在列表中目标位置增加新的节点          newItems.splice(newIndex, 0, this.oldData)          this.dataList = [...newItems]        }      }            // 拖动事件（主要是为了拖动时鼠标光标不变为禁止）      dragover(e: any) {        e.preventDefault()      }          };  &lt;/script&gt;  &lt;style&gt;  .sort-move {    transition: transform 0.3s;  }  &lt;/style&gt;</pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-104844.htm">动物疫苗现状调查（动物疫苗现状调查报告）</a></p>
+                                        <p>下一个：<a href="/news/article-105514.htm">动物疫苗厂家排名榜最新名单 动物疫苗厂家排名榜最新名单图片</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-99431.htm" title="宠物领养协议书范本大全最新版下载（宠物的领养协议是有法律保护的吗）">宠物领养协议书范本大全最新版下载（宠物的领养协议是有法律保护的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-100225.htm" title="卖宠物粮食的店名 卖宠物粮食的店名怎么取">卖宠物粮食的店名 卖宠物粮食的店名怎么取</a></li>
+                        <li class="py-2"><a href="/news/article-93488.htm" title="开宠物医院需要资质吗（想开个宠物医院需要考什么证）">开宠物医院需要资质吗（想开个宠物医院需要考什么证）</a></li>
+                        <li class="py-2"><a href="/news/article-105513.htm" title="vue实现列表拖拽排序的示例代码_vue.js">vue实现列表拖拽排序的示例代码_vue.js</a></li>
+                        <li class="py-2"><a href="/news/article-95762.htm" title="测试分类和原则">测试分类和原则</a></li>
+                        <li class="py-2"><a href="/news/article-95028.htm" title="东北农业大学动物医学学院电话（东北农大的动物医学专业怎么样）">东北农业大学动物医学学院电话（东北农大的动物医学专业怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-20-node-share.htm" title="VPN for PC | 4月20日20.7M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点地址">VPN for PC | 4月20日20.7M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-76649.htm" title="领养协议书范本2019版图片（领养孩子协议书图片）">领养协议书范本2019版图片（领养孩子协议书图片）</a></li>
+                        <li class="py-2"><a href="/news/article-83266.htm" title="宠物疫苗要多少钱（宠物疫苗要多少钱一针）">宠物疫苗要多少钱（宠物疫苗要多少钱一针）</a></li>
+                        <li class="py-2"><a href="/news/article-92028.htm" title="vue-v-model 常用修饰符">vue-v-model 常用修饰符</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">80</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer class="footer-area">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">VPN for PC 推荐免费VPN节点订阅中文网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/sstapnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/modernizr.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.appear.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/counter-up.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.timepicker.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
