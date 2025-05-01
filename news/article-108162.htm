@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnforpc.github.io/news/article-108162.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP别名/导入名称空间方法详解</title>
+        <meta name="description" content="介绍 命名空间的重要功能是能够使用别名引用外部完全限定名称或进行导入。PHP命名空间支持以下几种别名或导入-   给类名起别名，   为接口名称起别名，   给命名空间名称起别名   别名或导入函数和" />
+        <link rel="icon" href="/assets/website/img/sstapnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="VPN for PC 推荐免费VPN节点订阅中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnforpc.github.io/news/article-108162.htm" />
+    <meta property="og:site_name" content="VPN for PC 推荐免费VPN节点订阅中文网" />
+    <meta property="og:title" content="PHP别名/导入名称空间方法详解" />
+    <meta property="og:image" content="https://vpnforpc.github.io/uploads/20241109/7261ef247c22da26cab2bdb538f5d536.webp" />
+        <meta property="og:release_date" content="2025-04-30T09:34:26" />
+    <meta property="og:updated_time" content="2025-04-30T09:34:26" />
+        <meta property="og:description" content="介绍 命名空间的重要功能是能够使用别名引用外部完全限定名称或进行导入。PHP命名空间支持以下几种别名或导入-   给类名起别名，   为接口名称起别名，   给命名空间名称起别名   别名或导入函数和" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PHP别名/导入名称空间方法详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/magnific-popup.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/nice-select.min.css">
+    <link rel="stylesheet" href="/assets/website/css/sstapnode/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJ3WSD0P7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QCJ3WSD0P7');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="preloader">
+        <div class="loader-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container position-relative">
+                    <a class="navbar-brand" href="/">
+                                                <span>VPN for PC</span>
+                                            </a>
+                    <div class="mobile-menu-right">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                                                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="/client.htm">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="site-breadcrumb" style="background: url(/assets/website/img/sstapnode/01.jpg)">
+            <div class="container">
+                <h1 class="breadcrumb-title">PHP别名/导入名称空间方法详解</h1>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li class="active">正文</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-area py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<h2>介绍</h2> <p>命名空间的重要功能是能够使用别名引用外部完全限定名称或进行导入。PHP命名空间支持以下几种别名或导入-</p> <ul class="list-paddingleft-2"> <li> <p>给类名起别名，</p> </li> <li> <p>为接口名称起别名，</p> </li> <li> <p>给命名空间名称起别名</p> </li> <li> <p>别名或导入函数和常量名称。</p> </li> </ul> <p>在PHP中，别名是通过use运算符完成的。</p> <h2>使用运算符</h2> <h2>示例</h2> <pre>#test1.php &lt;?php namespace&nbsp;mynamespace; function&nbsp;sayhello(){ &nbsp;&nbsp;&nbsp;echo&nbsp;"Hello&nbsp;from&nbsp;mynamespace\n"; } sayhello(); namespace&nbsp;mynewspace; function&nbsp;sayhello(){ &nbsp;&nbsp;&nbsp;echo&nbsp;"Hello&nbsp;from&nbsp;my&nbsp;new&nbsp;space\n"; } sayhello(); use&nbsp;\mynewspace\sayhello&nbsp;as&nbsp;hello; ?&gt;</pre> <p>输出结果</p> <pre>Hello&nbsp;from&nbsp;mynamespace Hello&nbsp;from&nbsp;my&nbsp;new&nbsp;space</pre> <h2>多种使用陈述相结合</h2> <h2>示例</h2> <pre>&lt;?php namespace&nbsp;mynamespace; class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;function&nbsp;test()&nbsp;{&nbsp;echo&nbsp;"myclass&nbsp;in&nbsp;mynamespace\n";&nbsp;} } class&nbsp;testclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;test()&nbsp;{&nbsp;echo&nbsp;"testclass&nbsp;in&nbsp;mynamespace\n";&nbsp;} } use&nbsp;\mynamespace\myclass&nbsp;as&nbsp;myclass,&nbsp;\mynamespace\testclass; $a=new&nbsp;myclass(); $a-&gt;test(); $b=new&nbsp;\mynamespace\testclass(); $b-&gt;test(); ?&gt;</pre> <p>输出结果</p> <pre>myclass&nbsp;in&nbsp;mynamespace testclass&nbsp;in&nbsp;mynamespace</pre> <h2>导入和动态名称</h2> <p>动态替换导入类的名称</p> <h2>示例</h2> <pre>&lt;?php namespace&nbsp;mynamespace; class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;function&nbsp;test()&nbsp;{&nbsp;echo&nbsp;"myclass&nbsp;in&nbsp;mynamespace\n";&nbsp;} } class&nbsp;testclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;test()&nbsp;{&nbsp;echo&nbsp;"testclass&nbsp;in&nbsp;mynamespace\n";&nbsp;} } use&nbsp;\mynamespace\myclass&nbsp;as&nbsp;myclass; $a=new&nbsp;myclass; $b='myclass'; $c=new&nbsp;$b; ?&gt;</pre> <p>use关键字必须在最外部或全局范围内或在命名空间声明内声明。导入过程在编译时而不是在运行时完成。因此，不能对它进行块作用域限定。以下使用将是非法的</p> <h2>示例</h2> <pre>&lt;?php function&nbsp;myfunction(){ &nbsp;&nbsp;&nbsp;use&nbsp;myspace\myclass; &nbsp;&nbsp;&nbsp;// &nbsp;&nbsp;&nbsp;// } ?&gt;</pre> <p>包含的文件不会继承父文件的导入规则，因为它们是基于每个文件的</p> <div></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-107377.htm">被猫抓了把血挤出来还会有事吗图片（被猫抓了把血挤出来还会有事吗图片）</a></p>
+                                        <p>下一个：<a href="/news/article-108163.htm">动物的疫苗多少钱一次（动物疫苗价格）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-free-node-subscribe-links.htm" title="VPN for PC | 4月19日22.4M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址">VPN for PC | 4月19日22.4M/S|免费Shadowrocket/Clash/V2ray/SSR订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-95762.htm" title="测试分类和原则">测试分类和原则</a></li>
+                        <li class="py-2"><a href="/news/article-107374.htm" title="动物疫苗未冷藏几小时失效了怎么处理（动物疫苗能放冰箱吗）">动物疫苗未冷藏几小时失效了怎么处理（动物疫苗能放冰箱吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-26-free-subscribe-node.htm" title="VPN for PC | 4月26日21.1M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点地址">VPN for PC | 4月26日21.1M/S|免费Clash/Shadowrocket/V2ray/SSR订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-100225.htm" title="卖宠物粮食的店名 卖宠物粮食的店名怎么取">卖宠物粮食的店名 卖宠物粮食的店名怎么取</a></li>
+                        <li class="py-2"><a href="/news/article-108985.htm" title="动物疫苗产业链分析（动物疫苗产业链分析论文）">动物疫苗产业链分析（动物疫苗产业链分析论文）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-24-clash-v2ray-ss-ssr.htm" title="VPN for PC | 4月24日19.9M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点地址">VPN for PC | 4月24日19.9M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点地址</a></li>
+                        <li class="py-2"><a href="/news/article-86151.htm" title="动物疫苗接种时间表图片大全高清 动物疫苗接种时间表图片大全高清版">动物疫苗接种时间表图片大全高清 动物疫苗接种时间表图片大全高清版</a></li>
+                        <li class="py-2"><a href="/news/article-97184.htm" title="宠物到哪领养比较好（宠物哪里领养）">宠物到哪领养比较好（宠物哪里领养）</a></li>
+                        <li class="py-2"><a href="/news/article-88306.htm" title="怎么开宠物店需要些什么手续（零经验开宠物店的流程）">怎么开宠物店需要些什么手续（零经验开宠物店的流程）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer class="footer-area">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">VPN for PC 推荐免费VPN节点订阅中文网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="scroll-top"><i class="far fa-arrow-up"></i></a>
+    <script data-cfasync="false" src="/assets/website/js/frontend/sstapnode/email-decode.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/modernizr.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.appear.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/counter-up.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.timepicker.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/jquery.nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/sstapnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
