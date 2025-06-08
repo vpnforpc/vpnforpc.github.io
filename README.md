@@ -1,4 +1,4 @@
-# VPN for PC | 6月3日18.2M/S|免费SSR/Shadowrocket/Clash/V2ray订阅节点地址  更新时间 2025-06-03 09:47:19
+# VPN for PC | 6月8日18.8M/S|免费V2ray/Clash/Shadowrocket/SSR订阅节点地址  更新时间 2025-06-08 09:43:10
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnforpc.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://vpnforpc.github.io/uploads/2025/06/0-20250603.yaml
-- https://vpnforpc.github.io/uploads/2025/06/1-20250603.yaml
-- https://vpnforpc.github.io/uploads/2025/06/2-20250603.yaml
-- https://vpnforpc.github.io/uploads/2025/06/3-20250603.yaml
-- https://vpnforpc.github.io/uploads/2025/06/4-20250603.yaml
+- https://vpnforpc.github.io/uploads/2025/06/0-20250608.yaml
+- https://vpnforpc.github.io/uploads/2025/06/1-20250608.yaml
+- https://vpnforpc.github.io/uploads/2025/06/2-20250608.yaml
+- https://vpnforpc.github.io/uploads/2025/06/3-20250608.yaml
+- https://vpnforpc.github.io/uploads/2025/06/4-20250608.yaml
 
 ### V2ray订阅链接
 
-- https://vpnforpc.github.io/uploads/2025/06/0-20250603.txt
-- https://vpnforpc.github.io/uploads/2025/06/1-20250603.txt
-- https://vpnforpc.github.io/uploads/2025/06/2-20250603.txt
-- https://vpnforpc.github.io/uploads/2025/06/3-20250603.txt
-- https://vpnforpc.github.io/uploads/2025/06/4-20250603.txt
+- https://vpnforpc.github.io/uploads/2025/06/0-20250608.txt
+- https://vpnforpc.github.io/uploads/2025/06/1-20250608.txt
+- https://vpnforpc.github.io/uploads/2025/06/2-20250608.txt
+- https://vpnforpc.github.io/uploads/2025/06/3-20250608.txt
+- https://vpnforpc.github.io/uploads/2025/06/4-20250608.txt
 
 ### Sing-box订阅链接
 
-- https://vpnforpc.github.io/uploads/2025/06/20250603.json
+- https://vpnforpc.github.io/uploads/2025/06/20250608.json
 
 ## 更多clash节点订阅 ：
 
