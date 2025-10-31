@@ -1,4 +1,4 @@
-# VPN for PC | 10月22日20.9M/S|免费Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点订阅节点地址  更新时间 2025-10-22 10:16:00
+# VPN for PC | 10月31日20.4M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点订阅节点地址  更新时间 2025-10-31 17:51:00
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnforpc.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://vpnforpc.github.io/uploads/2025/10/0-20251022.yaml
-- https://vpnforpc.github.io/uploads/2025/10/1-20251022.yaml
-- https://vpnforpc.github.io/uploads/2025/10/2-20251022.yaml
-- https://vpnforpc.github.io/uploads/2025/10/3-20251022.yaml
-- https://vpnforpc.github.io/uploads/2025/10/4-20251022.yaml
+- https://vpnforpc.github.io/uploads/2025/10/0-20251031.yaml
+- https://vpnforpc.github.io/uploads/2025/10/1-20251031.yaml
+- https://vpnforpc.github.io/uploads/2025/10/2-20251031.yaml
+- https://vpnforpc.github.io/uploads/2025/10/3-20251031.yaml
+- https://vpnforpc.github.io/uploads/2025/10/4-20251031.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://vpnforpc.github.io/uploads/2025/10/0-20251022.txt
-- https://vpnforpc.github.io/uploads/2025/10/1-20251022.txt
-- https://vpnforpc.github.io/uploads/2025/10/2-20251022.txt
-- https://vpnforpc.github.io/uploads/2025/10/3-20251022.txt
-- https://vpnforpc.github.io/uploads/2025/10/4-20251022.txt
+- https://vpnforpc.github.io/uploads/2025/10/0-20251031.txt
+- https://vpnforpc.github.io/uploads/2025/10/1-20251031.txt
+- https://vpnforpc.github.io/uploads/2025/10/2-20251031.txt
+- https://vpnforpc.github.io/uploads/2025/10/3-20251031.txt
+- https://vpnforpc.github.io/uploads/2025/10/4-20251031.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://vpnforpc.github.io/uploads/2025/10/20251022.json
+- https://vpnforpc.github.io/uploads/2025/10/20251031.json
 
 ## 更多Clash节点订阅 ：
 
