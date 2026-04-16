@@ -307,44 +307,19 @@ sudo systemctl start clash
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的策略组如何根据延迟自动选择节点？</h5></div>
-    <div class="panel-body">
-        策略组可通过节点延迟测试结果自动选择最优节点。结合路由规则，可保证国内流量直连、海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何实现用户流量分配？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置带宽和流量配额。超出限制时可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 如何导入订阅？</h5></div>
-    <div class="panel-body">
-        在 WinXray 界面中点击“导入订阅”选项，将机场提供的订阅链接粘贴进去。点击更新后，WinXray 会自动下载节点配置并生成列表，用户可手动选择或自动切换延迟最低的节点使用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
-    <div class="panel-body">
-        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
-    <div class="panel-body">
-        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按域名分流优化浏览器流量？</h5></div>
-    <div class="panel-body">
-        Sing-box 可通过规则匹配域名，将浏览器流量分配到最优节点。结合策略组，可保证网页访问速度和稳定性，同时优化视频和游戏等其他流量，提高整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>如何在手机上减少代理应用对电量的消耗？</h5></div>
     <div class="panel-body">
         关闭不必要的后台代理连接，减少实时测速或心跳频率，启用省电模式并限制流量统计与日志记录；对于常用站点设置直连策略，避免所有流量都走代理带来的持续网络负荷。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>当 V2Ray 报错 inbound 没有监听，可能是哪些配置问题？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的策略组如何根据延迟自动选择节点？</h5></div>
     <div class="panel-body">
-        检查 inbound 配置是否包含正确的 port、protocol 与 listen 字段；确认没有端口冲突或权限问题（非 root 绑定 1024 以下端口会失败）；查看日志中具体错误信息并根据提示修复配置。<hr />    </div>
+        策略组可通过节点延迟测试结果自动选择最优节点。结合路由规则，可保证国内流量直连、海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 如何结合规则实现智能节点切换？</h5></div>
+    <div class="panel-body">
+        Surfboard 可根据规则文件和策略组自动选择延迟低、稳定性高的节点处理流量。不同应用流量可分配不同节点，优化访问速度和稳定性，减少手动切换节点的操作。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Trojan 是否需要证书？</h5></div>
@@ -352,9 +327,34 @@ sudo systemctl start clash
         是的，Trojan 必须使用有效的 TLS 证书才能运行。推荐使用 Let's Encrypt 免费证书。若证书过期或配置错误，客户端将无法建立加密连接，导致无法访问外部网络。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何结合规则实现智能节点切换？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
     <div class="panel-body">
-        Surfboard 可根据规则文件和策略组自动选择延迟低、稳定性高的节点处理流量。不同应用流量可分配不同节点，优化访问速度和稳定性，减少手动切换节点的操作。    </div>
+        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>当 V2Ray 报错 inbound 没有监听，可能是哪些配置问题？</h5></div>
+    <div class="panel-body">
+        检查 inbound 配置是否包含正确的 port、protocol 与 listen 字段；确认没有端口冲突或权限问题（非 root 绑定 1024 以下端口会失败）；查看日志中具体错误信息并根据提示修复配置。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 如何导入订阅？</h5></div>
+    <div class="panel-body">
+        在 WinXray 界面中点击“导入订阅”选项，将机场提供的订阅链接粘贴进去。点击更新后，WinXray 会自动下载节点配置并生成列表，用户可手动选择或自动切换延迟最低的节点使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何实现用户流量分配？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户设置带宽和流量配额。超出限制时可自动降速或阻止访问，确保服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何按域名分流优化浏览器流量？</h5></div>
+    <div class="panel-body">
+        Sing-box 可通过规则匹配域名，将浏览器流量分配到最优节点。结合策略组，可保证网页访问速度和稳定性，同时优化视频和游戏等其他流量，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
+    <div class="panel-body">
+        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -383,16 +383,16 @@ sudo systemctl start clash
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-3-25-top-vpn-node.htm" title="VPN for PC | 3月25日20.2M/S|免费V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点订阅节点地址">VPN for PC | 3月25日20.2M/S|免费V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-26-free-node-subscribe.htm" title="VPN for PC | 3月26日20.1M/S|免费Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅节点地址">VPN for PC | 3月26日20.1M/S|免费Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-23-mianfei-vpn.htm" title="VPN for PC | 3月23日21.4M/S|免费SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点/Clash节点订阅节点地址">VPN for PC | 3月23日21.4M/S|免费SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点/Clash节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-4-vpn-node.htm" title="VPN for PC | 3月4日19M/S|免费SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点地址">VPN for PC | 3月4日19M/S|免费SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-22-vpn-node.htm" title="VPN for PC | 3月22日22.3M/S|免费Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Trojan节点/Singbox节点订阅节点地址">VPN for PC | 3月22日22.3M/S|免费Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Trojan节点/Singbox节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-7-vpn-proxy.htm" title="VPN for PC | 3月7日19.5M/S|免费Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点/V2ray节点订阅节点地址">VPN for PC | 3月7日19.5M/S|免费Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-5-node-share.htm" title="VPN for PC | 3月5日20.5M/S|免费Clash节点/Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/V2ray节点订阅节点地址">VPN for PC | 3月5日20.5M/S|免费Clash节点/Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/V2ray节点订阅节点地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-27-vpn-proxy.htm" title="VPN for PC | 3月27日22.9M/S|免费Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点订阅节点地址">VPN for PC | 3月27日22.9M/S|免费Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-12-free-node-subscribe.htm" title="VPN for PC | 4月12日20.9M/S|免费Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点/Clash节点订阅节点地址">VPN for PC | 4月12日20.9M/S|免费Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点/Clash节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-15-node-share.htm" title="VPN for PC | 4月15日18.4M/S|免费Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点订阅节点地址">VPN for PC | 4月15日18.4M/S|免费Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-10-free-node-subscribe.htm" title="VPN for PC | 3月10日20.5M/S|免费V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点订阅节点地址">VPN for PC | 3月10日20.5M/S|免费V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点订阅节点地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-30-vpn-github.htm" title="VPN for PC | 3月30日20M/S|免费Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅节点地址">VPN for PC | 3月30日20M/S|免费Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-12-vpn-node.htm" title="VPN for PC | 3月12日21.4M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Trojan节点订阅节点地址">VPN for PC | 3月12日21.4M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Trojan节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-11-share-vpn.htm" title="VPN for PC | 3月11日22M/S|免费Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点订阅节点地址">VPN for PC | 3月11日22M/S|免费Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-9-node-share.htm" title="VPN for PC | 3月9日19.6M/S|免费Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点/Shadowrocket节点订阅节点地址">VPN for PC | 3月9日19.6M/S|免费Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点/Shadowrocket节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-19-node-share.htm" title="VPN for PC | 3月19日21.3M/S|免费Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点订阅节点地址">VPN for PC | 3月19日21.3M/S|免费Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-4-vpn-node.htm" title="VPN for PC | 3月4日19M/S|免费SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点地址">VPN for PC | 3月4日19M/S|免费SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-8-top-vpn-node.htm" title="VPN for PC | 3月8日21.6M/S|免费SSR节点/Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点订阅节点地址">VPN for PC | 3月8日21.6M/S|免费SSR节点/Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点订阅节点地址</a></li>
                     </ul>
     </div>
 </div>
@@ -404,7 +404,7 @@ sudo systemctl start clash
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
